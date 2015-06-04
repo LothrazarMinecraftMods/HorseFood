@@ -1,0 +1,21 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "samshorsefood",
+    "name": "Builder's Stackables
+    "description": ".",
+    "version": "1.0.0",
+    "mcversion": "1.8",
+    "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
+    "updateUrl": "",
+    "authorList": [ "Lothrazar" ],
+    "credits": "Thanks to LexManos for the gradle video, and everyone on the forums",
+    "logoFile": "",
+    "screenshots": [  ],
+    "parent": "",
+    "requiredMods": [ "Forge" ],
+    "dependencies": [  ],
+    "dependants": [  ],
+    "useDependencyInformation": false
+  }]
+}
