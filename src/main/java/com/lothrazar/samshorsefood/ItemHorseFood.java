@@ -1,8 +1,5 @@
 package com.lothrazar.samshorsefood;
 
-import java.util.List;
- 
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;

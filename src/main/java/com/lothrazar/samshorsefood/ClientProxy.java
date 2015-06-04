@@ -16,9 +16,7 @@ public class ClientProxy extends CommonProxy
    
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
-        String name;
-        Item item;
-	  
+        String name; 
         for(Item i : ItemRegistry.items)
         {  
         	name = TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
