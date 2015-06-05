@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModHorseFood
 {
     public static final String MODID = "samshorsefood";
-    public static final String VERSION = "1.0";
-    public static final String NAME = "Horse Upgrade Food";
+    public static final String VERSION = "1.8-1.0.0";
+    public static final String NAME = "Sam's Horse Food";
     @Instance(value = MODID)
 	public static ModHorseFood instance;
 	public static Logger logger; 
