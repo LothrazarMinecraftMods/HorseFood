@@ -22,12 +22,12 @@ group= "com.lothrazar.samshorsefood" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "SamsHorseFood"
 
 minecraft {
-    version = "1.8-11.14.1.1334"
+    version = "1.8-11.14.3.1446"
 	if(file('../run').exists()){
-		assetDir  = "../run/assets"
+ 
 		runDir = "../run/eclipse"
 	}else{
-		assetDir = "assets"
+ 
 		runDir = "eclipse"
 	}
  
