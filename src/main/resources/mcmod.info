@@ -2,9 +2,9 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samshorsefood",
-    "name": "Sam's Horse Food",
-    "description": ".",
-    "version": "1.0.0",
+    "name": "Horse Upgrade Food",
+    "description": "Carrots that upgrade your horses heath, speed, change its colour, and can transform it into a zombie or skeleton horse.",
+    "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",

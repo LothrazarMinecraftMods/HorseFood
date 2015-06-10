@@ -16,12 +16,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = ModHorseFood.MODID, version = ModHorseFood.VERSION,	name = ModHorseFood.NAME, useMetadata = true)
+@Mod(modid = ModHorseFood.MODID, useMetadata=true)
 public class ModHorseFood
 {
-    public static final String MODID = "samshorsefood";
-    public static final String VERSION = "1.8-1.0.0";
-    public static final String NAME = "Sam's Horse Food";
+    public static final String MODID = "samshorsefood"; 
     @Instance(value = MODID)
 	public static ModHorseFood instance;
 	public static Logger logger; 
