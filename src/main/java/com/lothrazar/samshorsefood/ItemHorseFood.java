@@ -17,9 +17,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHorseFood extends Item
 { 
-	public static int HEARTS_MAX = 20;
-	public static int SPEED_MAX = 4;
-	public static int JUMP_MAX = 5;
+	public static int HEARTS_MAX;
+	public static int SPEED_MAX;
+	public static int JUMP_MAX;
 	public ItemHorseFood()
 	{  
 		super();  
@@ -186,7 +186,7 @@ public class ItemHorseFood extends Item
 		}
 	}
 	
-	public static class Horse
+	public static class Horse 
 	{
 		public static final int variant_white = 0;
 		public static final int variant_creamy = 1;
@@ -202,9 +202,4 @@ public class ItemHorseFood extends Item
 		public static final int type_zombie = 3;
 		public static final int type_skeleton = 4;
 	}
-	
-	
-	
-	
-	
 }
