@@ -1,10 +1,19 @@
 package com.lothrazar.samshorsefood;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import org.apache.logging.log4j.Logger; 
 
 
+
+
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -25,6 +34,8 @@ public class ModHorseFood
 	public static Logger logger; 
 	@SidedProxy(clientSide="com.lothrazar.samshorsefood.ClientProxy", serverSide="com.lothrazar.samshorsefood.CommonProxy")
 	public static CommonProxy proxy; 
+	
+	public static IAttribute horseJumpStrength = null;
     @EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{  
@@ -36,6 +47,43 @@ public class ModHorseFood
 
 		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
+		
+		//version 1.1.0
+		//new item for speed
+		//new item for jump
+		
+		//new config for recipe expense - surround or single
+		//new config for speed/jump/health the max value of each. 
+		
+		
+		
+		/*Potion[] potionTypes = null;  //  public static final Potion[] potionTypes = new Potion[32];*/
+	    for (Field f : EntityHorse.class.getDeclaredFields()) 
+	    {
+	     
+	        //
+	        try 
+	        { 
+	        	
+	        	if(f.get(null) instanceof IAttribute)
+	        		System.out.println("__ "+f.getName());//then printdebug it
+	        	
+	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_76425_a")) 
+	            {
+	            	//must be true then eh (horseJumpStrength instanceof IAttribute)
+	            	f.setAccessible(true);
+		  
+	            	horseJumpStrength = (IAttribute)f.get(null);
+	            	
+	          
+	            }
+	        }
+	        catch (Exception e) 
+	        {
+	            System.err.println("Severe error, please report this to the mod author:");
+	            System.err.println(e);
+	        }
+	    }
 	}
     
     @EventHandler

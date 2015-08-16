@@ -1,3 +1,5 @@
 item.horse_upgrade_health.name=Diamond Carrot
 item.horse_upgrade_type.name=Emerald Carrot
 item.horse_upgrade_variant.name=Lapis Carrot
+item.horse_upgrade_speed.name=s Carrot
+item.horse_upgrade_jump.name=j Carrot

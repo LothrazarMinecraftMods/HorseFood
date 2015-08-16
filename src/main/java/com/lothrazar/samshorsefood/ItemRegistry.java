@@ -11,7 +11,8 @@ public class ItemRegistry
 	public static ItemHorseFood emeraldCarrot; 
 	public static ItemHorseFood lapisCarrot; 
 	public static ItemHorseFood diamondCarrot; 
-	  
+	public static ItemHorseFood horse_upgrade_health;
+	public static ItemHorseFood horse_upgrade_speed;
 	public static void registerItems()
 	{    
 		emeraldCarrot = new ItemHorseFood();
@@ -23,8 +24,15 @@ public class ItemRegistry
 		diamondCarrot = new ItemHorseFood();
 		ItemRegistry.registerItem(diamondCarrot, "horse_upgrade_health"); 
 		
+		horse_upgrade_speed = new ItemHorseFood();
+		ItemRegistry.registerItem(horse_upgrade_speed, "horse_upgrade_speed"); 
+		
+		horse_upgrade_health = new ItemHorseFood();
+		ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health"); 
+		
 		ItemHorseFood.addRecipes(); 
 	}
+	
 	
 	public static void registerItem(Item item, String name)
 	{ 

@@ -1,5 +1,7 @@
 package com.lothrazar.samshorsefood;
 
+import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
@@ -9,16 +11,31 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHorseFood extends Item
 { 
+	public static int HEARTS_MAX = 20;
+	public static int SPEED_MAX = 4;
+	public static int JUMP_MAX = 5;
 	public ItemHorseFood()
 	{  
 		super();  
 		this.setMaxStackSize(64);
 		this.setCreativeTab(CreativeTabs.tabFood);
+		
 	}
-	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced)
+	{
+		if(stack==null||stack.getItem()==null){return;}//just being safe
+		Item carrot = stack.getItem();
+
+		tooltip.add(carrot.getUnlocalizedName(stack));
+	}
+
 	public static void addRecipes() 
 	{
 		int dye_lapis = 4;
@@ -113,25 +130,45 @@ public class ItemHorseFood extends Item
 		{
 			float mh =  (float)horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
 		
-			if(mh < 40) //20 hearts
+			if(mh < 2*HEARTS_MAX) //20 hearts == 40 health points 
 			{ 
 				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(mh + 2);
 				 
 				success = true;
-			} 
+			}
+		}
+		else if(held.getItem() == ItemRegistry.horse_upgrade_health)
+		{
+			if(ModHorseFood.horseJumpStrength != null)//only happpens if mod installing preInit method fails to find it
+			{
+				double jump = horse.getEntityAttribute(ModHorseFood.horseJumpStrength).getAttributeValue();//horse.getHorseJumpStrength() ;
+		
+				if(jump < JUMP_MAX)
+				{
+					horse.getEntityAttribute(ModHorseFood.horseJumpStrength).setBaseValue(jump*1.10);
+					success = true;
+				}
+			}
+		}
+		else if(held.getItem() == ItemRegistry.horse_upgrade_speed)
+		{
+			double speed = horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue() ;
+		
+			//add ten percent
+			if(speed < SPEED_MAX)
+			{
+				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(speed*1.10);
+
+				success = true; 
+			}
 		}
 		 
 		if(success)
 		{ 
-			//ModHorseFood.decrHeldStackSize(player); 
-			
 			if (player.capabilities.isCreativeMode == false)
 	        {
 				player.inventory.decrStackSize(player.inventory.currentItem, 1);
 	        }
-			
-			
-			//ModHorseFood.spawnParticle(horse.worldObj, , horse.getPosition());
 			
 			for(int countparticles = 0; countparticles <= 10; ++countparticles)
 			{
@@ -142,8 +179,6 @@ public class ItemHorseFood extends Item
 				horse.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x + (horse.worldObj.rand.nextDouble() - 0.5D) * (double)0.8, y + horse.worldObj.rand.nextDouble() * (double)1.5 - (double)0.1, z + (horse.worldObj.rand.nextDouble() - 0.5D) * (double)0.8, 0.0D, 0.0D, 0.0D);
 			} 
  
-			//ModHorseFood.playSoundAt(player, "random.eat"); 
-			
 			player.worldObj.playSoundAtEntity(player, "random.eat", 1.0F, 1.0F);
 			
 			horse.setEating(true); //makes horse animate and bend down to eat
