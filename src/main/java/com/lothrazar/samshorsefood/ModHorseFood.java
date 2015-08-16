@@ -52,16 +52,19 @@ public class ModHorseFood
 	    {
 	        try 
 	        { 
-            	f.setAccessible(true);
+            	//
 	        	
-	        	if(f.get(null) instanceof IAttribute)
-	        		System.out.println("__ "+f.getName());//then printdebug it
+	        	//if(f.get(null) instanceof IAttribute)
+	        	System.out.println("__ "+f.getName());//then printdebug it
 	        	
 	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_76425_a")) // TODO: this key
 	            {
+	            	f.setAccessible(true);
 	            	//save pointer to the obj so we can reference it later
 	            	ModHorseFood.horseJumpStrength = (IAttribute)f.get(null);
 	            }
+	            	
+	        	
 	        }
 	        catch (Exception e) 
 	        {
@@ -69,6 +72,11 @@ public class ModHorseFood
 	            System.err.println(e);
 	        }
 	    }
+	    
+	    
+	    if(ModHorseFood.horseJumpStrength == null)
+	    	System.err.println(MODID+":horseJumpStrength: Error - field not found using reflection");
+	    
 	}
     
     @EventHandler
