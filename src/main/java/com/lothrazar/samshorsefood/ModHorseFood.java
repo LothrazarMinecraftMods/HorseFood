@@ -52,30 +52,23 @@ public class ModHorseFood
 		//new item for speed
 		//new item for jump
 		
-		//new config for recipe expense - surround or single
+		// TODO: new config for recipe expense - surround or single
 		//new config for speed/jump/health the max value of each. 
 		
-		
-		
-		/*Potion[] potionTypes = null;  //  public static final Potion[] potionTypes = new Potion[32];*/
 	    for (Field f : EntityHorse.class.getDeclaredFields()) 
 	    {
 	     
-	        //
 	        try 
 	        { 
+            	f.setAccessible(true);
 	        	
 	        	if(f.get(null) instanceof IAttribute)
 	        		System.out.println("__ "+f.getName());//then printdebug it
 	        	
-	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_76425_a")) 
+	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_76425_a")) // TODO: this key
 	            {
-	            	//must be true then eh (horseJumpStrength instanceof IAttribute)
-	            	f.setAccessible(true);
-		  
-	            	horseJumpStrength = (IAttribute)f.get(null);
-	            	
-	          
+	            	//save pointer to the obj so we can reference it later
+	            	ModHorseFood.horseJumpStrength = (IAttribute)f.get(null);
 	            }
 	        }
 	        catch (Exception e) 

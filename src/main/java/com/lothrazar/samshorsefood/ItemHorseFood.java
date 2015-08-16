@@ -10,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,7 +34,7 @@ public class ItemHorseFood extends Item
 		if(stack==null||stack.getItem()==null){return;}//just being safe
 		Item carrot = stack.getItem();
 
-		tooltip.add(carrot.getUnlocalizedName(stack));
+		tooltip.add(StatCollector.translateToLocal(carrot.getUnlocalizedName(stack)+".effect"));
 	}
 
 	public static void addRecipes() 
@@ -137,7 +138,7 @@ public class ItemHorseFood extends Item
 				success = true;
 			}
 		}
-		else if(held.getItem() == ItemRegistry.horse_upgrade_health)
+		else if(held.getItem() == ItemRegistry.horse_upgrade_jump)
 		{
 			if(ModHorseFood.horseJumpStrength != null)//only happpens if mod installing preInit method fails to find it
 			{
