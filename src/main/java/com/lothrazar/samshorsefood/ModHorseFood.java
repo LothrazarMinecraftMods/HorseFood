@@ -1,11 +1,18 @@
 package com.lothrazar.samshorsefood;
 
 import java.lang.reflect.Field;
+import java.text.DecimalFormat;
+
 import org.apache.logging.log4j.Logger; 
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
@@ -17,6 +24,8 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = ModHorseFood.MODID, useMetadata=true)
 public class ModHorseFood
@@ -37,9 +46,7 @@ public class ModHorseFood
 		ItemRegistry.registerItems();
 		
 		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
-		
-		FMLCommonHandler.instance().bus().register(instance); 
-		MinecraftForge.EVENT_BUS.register(instance); 
+
 		
 		//version 1.1.0
 		//new item for speed
@@ -82,6 +89,8 @@ public class ModHorseFood
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+		FMLCommonHandler.instance().bus().register(instance); 
+		MinecraftForge.EVENT_BUS.register(instance); 
 		proxy.registerRenderers();
     }
     
@@ -100,4 +109,39 @@ public class ModHorseFood
 			}  
 		}  
   	}
+     
+    @SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void addHorseInfo(RenderGameOverlayEvent.Text event )
+	{ 
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+    	if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
+		{
+		 	if(player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
+		 	{ 
+		 		EntityHorse horse = (EntityHorse)player.ridingEntity;
+		 
+				double speed =  horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue() ;
+		
+				double jump = horse.getHorseJumpStrength() ;
+				//convert from scale factor to blocks
+				double jumpHeight = 0;
+				double gravity = 0.98;
+				while (jump > 0)
+				{
+					jumpHeight += jump;
+					jump -= 0.08;
+					jump *= gravity;
+				}
+				
+				DecimalFormat df = new DecimalFormat("0.0000");
+				
+				event.left.add(StatCollector.translateToLocal("debug.horsespeed")+"  "+ df.format(speed)   ); 
+				
+				df = new DecimalFormat("0.0");
+				
+				event.left.add(StatCollector.translateToLocal("debug.horsejump") +"  "+ df.format(jumpHeight) );
+		 	}
+	 	}  
+	}
 }
