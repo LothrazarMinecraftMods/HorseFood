@@ -146,7 +146,7 @@ public class ModHorseFood
 				double jumpHeight = getJumpTranslated(horse.getHorseJumpStrength());
 				 
 				
-				DecimalFormat df = new DecimalFormat("0.00");
+				DecimalFormat df = new DecimalFormat("00.00");
 				
 				event.left.add(StatCollector.translateToLocal("debug.horsespeed")+"  "+ df.format(speed)   ); 
 				
