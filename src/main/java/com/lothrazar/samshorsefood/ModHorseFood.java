@@ -110,6 +110,24 @@ public class ModHorseFood
 		}  
   	}
      
+    static double getJumpTranslated(double jump)
+    {
+    	//double jump = horse.getHorseJumpStrength();
+		//convert from scale factor to blocks
+		double jumpHeight = 0;
+		double gravity = 0.98;
+		while (jump > 0)
+		{
+			jumpHeight += jump;
+			jump -= 0.08;
+			jump *= gravity;
+		}
+		return jumpHeight;
+    }
+    static double getSpeedTranslated(double speed)
+    {
+    	return speed*10;
+    }
     @SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void addHorseInfo(RenderGameOverlayEvent.Text event )
@@ -121,20 +139,14 @@ public class ModHorseFood
 		 	{ 
 		 		EntityHorse horse = (EntityHorse)player.ridingEntity;
 		 
-				double speed =  horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue() ;
+				double speed = getSpeedTranslated( horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue() );
 		
-				double jump = horse.getHorseJumpStrength() ;
+				//double jump = horse.getHorseJumpStrength() ;
 				//convert from scale factor to blocks
-				double jumpHeight = 0;
-				double gravity = 0.98;
-				while (jump > 0)
-				{
-					jumpHeight += jump;
-					jump -= 0.08;
-					jump *= gravity;
-				}
+				double jumpHeight = getJumpTranslated(horse.getHorseJumpStrength());
+				 
 				
-				DecimalFormat df = new DecimalFormat("0.0000");
+				DecimalFormat df = new DecimalFormat("0.00");
 				
 				event.left.add(StatCollector.translateToLocal("debug.horsespeed")+"  "+ df.format(speed)   ); 
 				

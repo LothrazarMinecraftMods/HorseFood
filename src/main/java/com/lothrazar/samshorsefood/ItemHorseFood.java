@@ -20,7 +20,7 @@ public class ItemHorseFood extends Item
 	public static int HEARTS_MAX;
 	public static int SPEED_MAX;
 	public static int JUMP_MAX;
-	private static double JUMP_SCALE = 1.05;//%age
+	private static double JUMP_SCALE = 1.02;//%age
 	private static double SPEED_SCALE = 1.05;//%age
 	public ItemHorseFood()
 	{  
@@ -147,7 +147,11 @@ public class ItemHorseFood extends Item
 				double jump = horse.getEntityAttribute(ModHorseFood.horseJumpStrength).getAttributeValue();//horse.getHorseJumpStrength() ;
 
 				double newjump = jump*JUMP_SCALE;
-				if(newjump < JUMP_MAX)
+				
+				
+
+			//	double jumpHeight = getJumpTranslated(horse.getHorseJumpStrength());
+				if(ModHorseFood.getJumpTranslated(newjump) < JUMP_MAX)
 				{
 					horse.getEntityAttribute(ModHorseFood.horseJumpStrength).setBaseValue(newjump);
 System.out.println("newjump = "+newjump);
@@ -161,7 +165,7 @@ System.out.println("newjump = "+newjump);
 		
 			double newSpeed = speed*SPEED_SCALE;
 			//add ten percent
-			if(newSpeed < SPEED_MAX)
+			if(ModHorseFood.getSpeedTranslated(newSpeed) < SPEED_MAX)
 			{
 				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(newSpeed);
 System.out.println("speed = "+newSpeed);
