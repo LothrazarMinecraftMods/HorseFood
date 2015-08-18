@@ -163,7 +163,7 @@ public class ItemHorseFood extends Item
 				if(ModHorseFood.getJumpTranslated(newjump) < JUMP_MAX)
 				{
 					horse.getEntityAttribute(ModHorseFood.horseJumpStrength).setBaseValue(newjump);
-System.out.println("newjump = "+newjump);
+//System.out.println("newjump = "+newjump);
 					success = true;
 				}
 			}
@@ -177,7 +177,7 @@ System.out.println("newjump = "+newjump);
 			if(ModHorseFood.getSpeedTranslated(newSpeed) < SPEED_MAX)
 			{
 				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(newSpeed);
-System.out.println("speed = "+newSpeed);
+//System.out.println("speed = "+newSpeed);
 				success = true; 
 			}
 		}
