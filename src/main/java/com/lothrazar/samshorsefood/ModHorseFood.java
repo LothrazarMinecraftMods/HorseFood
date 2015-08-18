@@ -54,21 +54,40 @@ public class ModHorseFood
 		
 		// TODO: new config for recipe expense - surround or single
 		//new config for speed/jump/health the max value of each. 
-		
+    	/*__ field_110276_bu
+__ field_110276_bu
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110271_bv
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110270_bw
+[18:28:18] [Client thread/INFO] [STDERR/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:80]: Severe error, please report this to the mod author:
+[18:28:18] [Client thread/INFO] [STDERR/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:81]: java.lang.ClassCastException: [Ljava.lang.String; cannot be cast to net.minecraft.entity.ai.attributes.IAttribute
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110273_bx
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110272_by
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110268_bz
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110269_bA
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110291_bB
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110292_bC
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110289_bD
+[18:28:18] [Client thread/INFO] [STDOUT/samshorsefood]: [com.lothrazar.samshorsefood.ModHorseFood:onPreInit:67]: __ field_110290_bE
+*/
 	    for (Field f : EntityHorse.class.getDeclaredFields()) 
 	    {
 	        try 
 	        { 
-            	//
+
 	        	
 	        	//if(f.get(null) instanceof IAttribute)
-	        	System.out.println("__ "+f.getName());//then printdebug it
-	        	
-	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_76425_a")) // TODO: this key
+	        	//System.out.println("== "+f.getName()+" ** "+f.getType());
+ 
+	        	//interface net.minecraft.entity.ai.attributes.IAttribute
+	         
+	            if (f.getName().equals("horseJumpStrength") || f.getName().equals("field_110270_bw") || 
+	            		"interface net.minecraft.entity.ai.attributes.IAttribute".equals(f.getType()+"")) // TODO: old 1.7 was field_76425_a
 	            {
 	            	f.setAccessible(true);
 	            	//save pointer to the obj so we can reference it later
 	            	ModHorseFood.horseJumpStrength = (IAttribute)f.get(null);
+		          //  System.err.println("FOUND FOUND FOUND"); 
+		            break;
 	            }
 	            	
 	        	
