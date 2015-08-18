@@ -42,6 +42,7 @@ public class ItemHorseFood extends Item
 	public static void addRecipes() 
 	{
 		int dye_lapis = 4;
+		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.emeraldCarrot)
 			,Items.carrot
 			,Items.emerald);
@@ -53,6 +54,14 @@ public class ItemHorseFood extends Item
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.diamondCarrot)
 			,Items.carrot
 			,Items.diamond); 
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_jump)
+			,Items.carrot
+			,Items.ender_eye); 
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_speed)
+			,Items.carrot
+			,Items.redstone); 
 	}
 
 	public static void onHorseInteract(EntityHorse horse,EntityPlayer player, ItemStack held) 
