@@ -1,7 +1,6 @@
 package com.lothrazar.samshorsefood;
 
 import java.util.List;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
@@ -25,10 +24,11 @@ public class ItemHorseFood extends Item
 	public ItemHorseFood()
 	{  
 		super();  
-		this.setMaxStackSize(64);
-		this.setCreativeTab(CreativeTabs.tabFood);
+		//this.setMaxStackSize(64);
+		this.setCreativeTab(ModHorseFood.tabHorseFood);
 		
 	}
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced)

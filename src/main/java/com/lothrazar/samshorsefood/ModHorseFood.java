@@ -7,9 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -38,7 +40,18 @@ public class ModHorseFood
 	public static Logger logger; 
 	public static ConfigRegistry cfg; 
 	public static IAttribute horseJumpStrength = null;
-    @EventHandler
+   
+	
+
+	public static CreativeTabs tabHorseFood = new CreativeTabs("tabHorseFood") 
+	{ 
+		@Override
+		public Item getTabIconItem() 
+		{ 
+			return ItemRegistry.diamondCarrot;
+		}
+	};    
+	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{  
 		logger = event.getModLog();  

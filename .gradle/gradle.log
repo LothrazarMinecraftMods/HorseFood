@@ -14,7 +14,7 @@ Note: C:\Users\OWNER\Documents\forge_multi\HorseFood\build\sources\java\com\loth
 Note: Recompile with -Xlint:unchecked for details.
 1 warning
 
-:processResources UP-TO-DATE
+:processResources
 :classes
 :jar
 :compileTestJava UP-TO-DATE
@@ -32,4 +32,4 @@ Note: Recompile with -Xlint:unchecked for details.
 
 BUILD SUCCESSFUL
 
-Total time: 18.727 secs
+Total time: 32.79 secs
