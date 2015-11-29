@@ -17,8 +17,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.event.entity.player.EntityInteractEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.event.entity.player.EntityInteractEvent; 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -86,8 +85,6 @@ __ field_110276_bu
 	    {
 	        try 
 	        { 
-
-	        	
 	        	//if(f.get(null) instanceof IAttribute)
 	        	//System.out.println("== "+f.getName()+" ** "+f.getType());
  
@@ -102,8 +99,6 @@ __ field_110276_bu
 		          //  System.err.println("FOUND FOUND FOUND"); 
 		            break;
 	            }
-	            	
-	        	
 	        }
 	        catch (Exception e) 
 	        {
@@ -112,16 +107,13 @@ __ field_110276_bu
 	        }
 	    }
 	    
-	    
 	    if(ModHorseFood.horseJumpStrength == null)
 	    	System.err.println(MODID+":horseJumpStrength: Error - field not found using reflection");
-	    
 	}
     
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
 		proxy.registerRenderers();
     }
@@ -156,10 +148,12 @@ __ field_110276_bu
 		}
 		return jumpHeight;
     }
+    
     static double getSpeedTranslated(double speed)
     {
     	return speed*100;
     }
+    
     @SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void addHorseInfo(RenderGameOverlayEvent.Text event )
@@ -177,7 +171,6 @@ __ field_110276_bu
 				//convert from scale factor to blocks
 				double jumpHeight = getJumpTranslated(horse.getHorseJumpStrength());
 				 
-				
 				DecimalFormat df = new DecimalFormat("0.00");
 				
 				event.left.add(StatCollector.translateToLocal("debug.horsespeed")+"  "+ df.format(speed)   ); 
