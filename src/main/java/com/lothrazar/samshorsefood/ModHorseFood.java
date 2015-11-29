@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = ModHorseFood.MODID, useMetadata=true)
+@Mod(modid = ModHorseFood.MODID, useMetadata=true, updateJSON="https://raw.githubusercontent.com/LothrazarMinecraftMods/HorseFood/master/update.json")
 public class ModHorseFood
 {
     public static final String MODID = "samshorsefood"; 
