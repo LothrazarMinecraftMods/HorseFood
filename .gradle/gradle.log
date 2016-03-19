@@ -1,7 +1,5 @@
-This set of MCP mappings was designed for MC 1.8.8. Use at your own peril.This set of MCP mappings was designed for MC 1.8.8. Use at your own peril.
-
 #################################################
-         ForgeGradle 2.1-SNAPSHOT-21e9d79        
+         ForgeGradle 2.1-SNAPSHOT-9e8f067        
   https://github.com/MinecraftForge/ForgeGradle  
 #################################################
                Powered by MCP unknown               
@@ -24,13 +22,21 @@ This set of MCP mappings was designed for MC 1.8.8. Use at your own peril.This s
 :deobfMcSRG SKIPPED
 :decompileMc SKIPPED
 :fixMcSources SKIPPED
-:applySourcePatches SKIPPED
+:applySourcePatches
 :remapMcSources SKIPPED
 :recompileMc SKIPPED
 :extractNatives SKIPPED
 :getAssetIndex UP-TO-DATE
 :getAssets
-Current status: 473/734   64%
+Current status: 117/1045   11%
+Current status: 243/1045   23%
+Current status: 343/1045   32%
+Current status: 448/1045   42%
+Current status: 539/1045   51%
+Current status: 665/1045   63%
+Current status: 810/1045   77%
+Current status: 909/1045   86%
+Current status: 1033/1045   98%
 :makeStart
 :setupDecompWorkspace
 :eclipseClasspath
@@ -42,4 +48,4 @@ Current status: 473/734   64%
 
 BUILD SUCCESSFUL
 
-Total time: 1 mins 27.963 secs
+Total time: 1 mins 29.235 secs
