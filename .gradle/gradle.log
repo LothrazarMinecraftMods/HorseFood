@@ -9,36 +9,36 @@
 #################################################
 :deobfCompileDummyTask
 :deobfProvidedDummyTask
-:sourceApiJava UP-TO-DATE
-:compileApiJava UP-TO-DATE
-:processApiResources UP-TO-DATE
-:apiClasses UP-TO-DATE
-:sourceMainJava UP-TO-DATE
-:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
-1 warning
-
-:processResources UP-TO-DATE
-:classes
-:jar
-:sourceTestJava UP-TO-DATE
-:compileTestJava UP-TO-DATE
-:processTestResources UP-TO-DATE
-:testClasses UP-TO-DATE
-:test UP-TO-DATE
+:getVersionJson
+:extractUserdev
+:extractDependencyATs SKIPPED
 :extractMcpData SKIPPED
 :extractMcpMappings SKIPPED
-:getVersionJson
-:extractUserdev UP-TO-DATE
 :genSrgs SKIPPED
-:reobfJar
-:extractRangemapReplacedMain
-C:\Users\OWNER\Documents\forge_multi\HorseFood\build\sources\main\java
-:retromapReplacedMain UP-TO-DATE
-:sourceJar UP-TO-DATE
-:assemble
-:check UP-TO-DATE
-:build
+:downloadClient SKIPPED
+:downloadServer SKIPPED
+:splitServerJar SKIPPED
+:mergeJars SKIPPED
+:deobfMcSRG SKIPPED
+:decompileMc SKIPPED
+:fixMcSources SKIPPED
+:applySourcePatches
+:remapMcSources SKIPPED
+:recompileMc SKIPPED
+:extractNatives SKIPPED
+:getAssetIndex UP-TO-DATE
+:getAssets
+Current status: 449/1045   42%
+Current status: 871/1045   83%
+:makeStart
+:setupDecompWorkspace
+:eclipseClasspath
+:eclipseJdt
+:eclipseProject
+:makeEclipseCleanRunClient
+:makeEclipseCleanRunServer UP-TO-DATE
+:eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 16.152 secs
+Total time: 1 mins 17.82 secs

@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
@@ -129,11 +130,15 @@ public class ModHorseFood{
 	@SubscribeEvent
 	public void onEntityInteractEvent(EntityInteractEvent event){
 
-		ItemStack held = event.entityPlayer.getHeldItemMainhand();
+		if(event.getEntity() instanceof EntityPlayer == false){
+			return;
+		}
+		EntityPlayer entityPlayer = (EntityPlayer)event.getEntity();
+		ItemStack held = entityPlayer.getHeldItemMainhand();
 
 		if(held != null && held.getItem() instanceof ItemHorseFood){
 			if(event.getTarget() instanceof EntityHorse){
-				ItemHorseFood.onHorseInteract((EntityHorse) event.getTarget(), event.entityPlayer, held);
+				ItemHorseFood.onHorseInteract((EntityHorse) event.getTarget(), entityPlayer, held);
 
 				event.setCanceled(true);// stop the GUI inventory opening
 			}
@@ -175,12 +180,12 @@ public class ModHorseFood{
 				double jumpHeight = getJumpTranslated(horse.getHorseJumpStrength());
 
 				DecimalFormat df = new DecimalFormat("0.00");
-
-				event.left.add(I18n.translateToLocal("debug.horsespeed") + "  " + df.format(speed));
+  
+				event.getLeft().add(I18n.translateToLocal("debug.horsespeed") + "  " + df.format(speed));
 
 				df = new DecimalFormat("0.0");
 
-				event.left.add(I18n.translateToLocal("debug.horsejump") + "  " + df.format(jumpHeight));
+				event.getLeft().add(I18n.translateToLocal("debug.horsejump") + "  " + df.format(jumpHeight));
 			}
 		}
 	}
